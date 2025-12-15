@@ -1,5 +1,11 @@
 import express from "express";
 import createLink from "../controller/create.js";
+import linkRedirection from "../controller/linkredirect.js";
+import { deleteLink, getAllLinks,getLinkStats } from "../controller/links.js";
 const linkRouter=express.Router();
 linkRouter.post('/api/create',createLink);
+linkRouter.get('/api/links',getAllLinks);   
+linkRouter.get('/api/stats/:code',getLinkStats);
+linkRouter.delete('/api/links/:id',deleteLink);   
+linkRouter.get('/:code',linkRedirection);
 export default linkRouter;

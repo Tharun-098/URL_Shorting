@@ -36,11 +36,11 @@ const createLink = async (req, res) => {
     }
     const reservedCodes = [
       "api",
-      "admin",
-      "stats",
+      "admins",
+      "statss",
       "health",
-      "auth",
-      "login",
+      "auths",
+      "logins",
       "signup",
     ];
     if (reservedCodes.includes(generatedCode.toLowerCase())) {
@@ -54,7 +54,7 @@ const createLink = async (req, res) => {
       url: originalUrl,
       code: generatedCode,
     });
-    return res.status(201).json({ success: true, data: newLink });
+    return res.status(201).json({ success: true, data: newLink,shortUrl:`http://${req.headers.host}/${newLink.code}` });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
