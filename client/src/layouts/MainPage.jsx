@@ -1,6 +1,7 @@
 import React from 'react'
 import {FaLink} from "react-icons/fa"
 import Form from '../components/Form'
+import Table from '../components/Table'
 const MainPage = () => {
   return (
     <div className='bg-blue-50 min-h-screen'>
@@ -8,8 +9,9 @@ const MainPage = () => {
         <FaLink className='w-8 h-8'/>
         <h1 className='font-bold text-2xl'>TinyUrl</h1>
       </header>
-      <main className='bg-white p-4 m-8 rounded-md'>
+      <main className='m-8'>
         <Form/>
+        <Table/>
       </main>
     </div>
   )

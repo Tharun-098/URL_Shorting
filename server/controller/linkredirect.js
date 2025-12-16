@@ -11,7 +11,7 @@ const linkRedirection=async(req,res)=>{
             $inc:{clicks:1},
             lastClickedAt:new Date().toISOString()
         })
-        return res.redirect(linkData.url);
+        return res.status(302).redirect(linkData.url);
     } catch (error) {
         return res.status(500).json({success:false,message:error.message});
     }

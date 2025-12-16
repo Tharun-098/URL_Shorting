@@ -25,7 +25,7 @@ const Form = () => {
   };
 }
   return (
-    <div>
+    <div className="bg-white p-4 rounded-md">
       <h1 className="text-xl font-semibold">Create Short Link</h1>
       <form onSubmit={handleSubmit}>
         <label className="font-semibold block text-gray-500 my-1 text-md">
@@ -46,7 +46,7 @@ const Form = () => {
           placeholder="code"
           className="w-full border border-gray-300  p-2 rounded-sm my-2 focus:outline-none focus:ring-2 focus:ring-blue-400 "
         />
-        <button className="w-full text-center p-3 bg-blue-500 text-white font-medium rounded-sm">
+        <button className="w-full text-center p-3 bg-blue-500 text-white font-medium rounded-sm cursor-pointer">
           Create short link
         </button>
       </form>
