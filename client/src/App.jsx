@@ -1,11 +1,10 @@
 import React from 'react'
 import './App.css'
+import MainPage from './layouts/MainPage'
 const App = () => {
   return (
     <div>
-      <h1 className='text-2xl'>
-        Welcome
-      </h1>
+      <MainPage/>
     </div>
   )
 }
