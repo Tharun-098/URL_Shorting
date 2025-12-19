@@ -4,6 +4,9 @@ import linkRedirection from "../controller/linkredirect.js";
 import { deleteLink, getAllLinks,getLinkStats } from "../controller/links.js";
 import { limiter, linkLimiter } from "../middleware/ratelimit.js";
 const linkRouter=express.Router();
+linkRouter.get('/',(req,res)=>{
+    console.log('API is running');
+})
 linkRouter.post('/api/create',limiter,createLink);
 linkRouter.get('/api/links',getAllLinks);   
 linkRouter.get('/api/stats/:code',getLinkStats);
