@@ -10,10 +10,10 @@ app.use(cors({
 }))
 app.use(express.json());
 
-app.use('/',linkRouter);
-
 app.use('/api',(req,res)=>{
     res.send("Api is running successfully")
 });
+app.use('/',linkRouter);
+
 
 export default app;
