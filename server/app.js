@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use('/',linkRouter);
 
-app.get('/api',(req,res)=>{
+app.use('/api',(req,res)=>{
     res.send("Api is running successfully")
 });
 
