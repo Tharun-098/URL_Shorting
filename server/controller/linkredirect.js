@@ -4,6 +4,8 @@ const linkRedirection=async(req,res)=>{
     try {
         const {code}=req.params;
         const linkData=await link.findOne({code});
+        console.log(req.method, req.originalUrl);
+
         if(!linkData){
             return res.status(404).json({success:false,message:"Link not found"});
         }

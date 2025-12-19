@@ -37,13 +37,6 @@ const Table = () => {
       console.error("Copy failed", err);
     }
   };
-  //   const handleRedirect = async(code) => {
-  //     const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/${code}`);
-  //     const data = await res.json();
-  //     window.location.href = data.url;
-  //   fetchLinks();
-  // };
-
   return (
     <div className="bg-white mt-3 p-4">
       <h1 className="font-semibold text-xl">Your Links</h1>
@@ -63,23 +56,13 @@ const Table = () => {
               <tr className="border-b border-gray-300" key={link._id}>
                 <td className="px-2 py-3 flex gap-1 items-center">
                   <span className="max-w-50 text-blue-600 cursor-pointer">
-                    <a
+                     <a
                       href={`${import.meta.env.VITE_BACKEND_URL}/${link.code}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-600"
-                    //   onClick={() => {
-                    //     setLinks((prev) =>
-                    //       prev.map((l) =>
-                    //         l._id === link._id
-                    //           ? { ...l, clicks: l.clicks + 1 }
-                    //           : l
-                    //       )
-                    //     );
-                    //   }}
-                    >
+                      className="text-blue-600">
                       {`${import.meta.env.VITE_BACKEND_URL}/${link.code}`}
-                    </a>
+                     </a>
                   </span>
                   <span>
                     {id === link._id ? (
@@ -130,15 +113,6 @@ const Table = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600"
-                //   onClick={(e) => {
-                //     setLinks((prev) =>
-                //           prev.map((l) =>
-                //             l._id === link._id
-                //               ? { ...l, clicks: l.clicks + 1 }
-                //               : l
-                //           )
-                //         );
-                //   }}
                 >
                   {`${import.meta.env.VITE_BACKEND_URL}/${link.code}`}
                 </a>
