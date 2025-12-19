@@ -156,7 +156,7 @@ const Table = () => {
               </button>
               <button
                 className="flex-1 bg-red-100 text-red-600 p-2 rounded-md"
-                onClick={handleDelete}
+                onClick={() => handleDelete(link._id)}
               >
                 Remove
               </button>
