@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FaChartBar, FaClipboard, FaCheck } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 const Table = () => {
   const [links, setLinks] = useState([]);
   const [id, setId] = useState(null);
+  const navigate=useNavigate();
   const fetchLinks = async () => {
     const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/links`);
     const data = await res.json();
@@ -87,7 +89,7 @@ const Table = () => {
                 </td>
                 <td className="px-2 py-3 ">
                   <div className="flex gap-2 items-center justify-center">
-                    <span className="text-blue-700">
+                    <span className="text-blue-700" onClick={()=>navigate(`/stats/${link.code}`)}>
                       <FaChartBar />
                     </span>
                     <button
@@ -105,7 +107,7 @@ const Table = () => {
       </div>
       <div className="block lg:hidden mt-3 space-y-4">
         {links?.map((link) => (
-          <div className="border rounded-lg p-3 bg-white shadow-sm border-none">
+          <div className="border rounded-lg p-3 bg-white shadow-sm border-none" key={link._id}>
             <p className="text-blue-600 font-medium break-all border-b border-gray-100 flex items-center">
               <span>
                 <a
@@ -148,7 +150,8 @@ const Table = () => {
             </div>
 
             <div className="flex gap-2 mt-3">
-              <button className="flex-1 bg-blue-100 text-blue-700 p-2 rounded-md flex items-center justify-center gap-1">
+              <button className="flex-1 bg-blue-100 text-blue-700 p-2 rounded-md flex items-center justify-center gap-1"
+              onClick={()=>navigate(`/stats/${link.code}`)}>
                 <FaChartBar /> Stats
               </button>
               <button
