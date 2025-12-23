@@ -1,29 +1,8 @@
-import { useRef } from "react";
+import { useContext } from "react";
+import { DataContext } from "../context/DataContext";
 
 const Form = () => {
-  const url = useRef(null);
-  const codes = useRef(null);
-  const handleSubmit = async (e) => {
-    try {
-        e.preventDefault();
-        console.log(url.current.value)
-        console.log(codes.current.value)
-        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/create`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                originalUrl: url.current.value,
-                code: codes.current.value,
-            }),
-        });
-        const data=await res.json();
-        console.log(data.message);
-    } catch (error) {
-        console.log(error.message);
-  };
-}
+  const {url,codes,handleSubmit}=useContext(DataContext);
   return (
     <div className="bg-white p-4 rounded-md">
       <h1 className="text-xl font-semibold">Create Short Link</h1>
