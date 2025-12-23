@@ -1,8 +1,10 @@
-import { Children, createContext,useRef } from "react";
-
+import {  createContext,useRef } from "react";
+import { useState } from "react";
 export const DataContext=createContext();
 
-export const DataProvider=({Children})=>{
+export const DataProvider=({children})=>{
+    const [links, setLinks] = useState([]);
+  const [id, setId] = useState(null);
     const url = useRef(null);
   const codes = useRef(null);
   const handleSubmit = async (e) => {
@@ -24,13 +26,45 @@ export const DataProvider=({Children})=>{
         console.log(data.message);
         url.current.value="";
         codes.current.value="";
+        fetchLinks();
     } catch (error) {
         console.log(error.message);
   };
 }
+const fetchLinks = async () => {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/links`);
+    const data = await res.json();
+    setLinks(data.data);
+  };
+  const handleDelete = async (id) => {
+    const res = await fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/api/links/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (res.ok) {
+      fetchLinks();
+    }
+  };
+  const handleCopy = async (shortUrl, id) => {
+    try {
+      await navigator.clipboard.writeText(shortUrl);
+      alert("Short URL copied!");
+      setId(id);
+      setTimeout(() => {
+        setId(null);
+      }, 2000);
+    } catch (err) {
+      console.error("Copy failed", err);
+    }
+  };
     return (
-        <DataContext.Provider value={{url,codes,handleSubmit}}>
-            {Children}
+        <DataContext.Provider value={{url,codes,handleSubmit,handleCopy,links,fetchLinks,handleDelete,id}}>
+            {children}
         </DataContext.Provider>
     )
 }

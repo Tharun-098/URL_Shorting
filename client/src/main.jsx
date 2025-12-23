@@ -7,7 +7,7 @@ import { DataProvider } from './context/DataContext.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-    <DataProvider>
+    <DataProvider >
     <App />
     </DataProvider>
     </BrowserRouter>

@@ -1,44 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaChartBar, FaClipboard, FaCheck } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { DataContext } from "../context/DataContext";
 const Table = () => {
-  const [links, setLinks] = useState([]);
-  const [id, setId] = useState(null);
+  const {handleCopy,links,fetchLinks,handleDelete,id}=useContext(DataContext);
   const navigate=useNavigate();
-  const fetchLinks = async () => {
-    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/links`);
-    const data = await res.json();
-    setLinks(data.data);
-  };
   useEffect(() => {
     fetchLinks();
   }, []);
-  const handleDelete = async (id) => {
-    const res = await fetch(
-      `${import.meta.env.VITE_BACKEND_URL}/api/links/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    if (res.ok) {
-      fetchLinks();
-    }
-  };
-  const handleCopy = async (shortUrl, id) => {
-    try {
-      await navigator.clipboard.writeText(shortUrl);
-      alert("Short URL copied!");
-      setId(id);
-      setTimeout(() => {
-        setId(null);
-      }, 2000);
-    } catch (err) {
-      console.error("Copy failed", err);
-    }
-  };
   return (
     <div className="bg-white mt-3 p-4">
       <h1 className="font-semibold text-xl">Your Links</h1>
