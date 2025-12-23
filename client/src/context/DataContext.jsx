@@ -1,6 +1,6 @@
-import { Children, useContext,useRef } from "react";
+import { Children, createContext,useRef } from "react";
 
-export const DataContext=useContext();
+export const DataContext=createContext();
 
 export const DataProvider=({Children})=>{
     const url = useRef(null);
