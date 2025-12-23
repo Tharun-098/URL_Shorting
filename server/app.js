@@ -10,9 +10,9 @@ app.use(cors({
 }))
 app.use(express.json());
 
-app.use('/api',(req,res)=>{
-    res.send("Api is running successfully")
-});
+//app.use('/api',(req,res)=>{
+  //  res.send("Api is running successfully")
+//});
 app.use('/',linkRouter);
 
 
