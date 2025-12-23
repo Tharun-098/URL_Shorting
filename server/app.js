@@ -15,8 +15,8 @@ app.use(express.json());
 //});
 app.use('/',linkRouter);
 
-app.use('*',(req,res)=>{
-  res.sendFile( path.join(__dirname, 'views', 'error.html'));
-})
+// app.use('*',(req,res)=>{
+//   res.sendFile( path.join(__dirname, 'views', 'error.html'));
+// })
 
 export default app;
