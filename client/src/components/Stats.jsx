@@ -57,7 +57,7 @@ const Stats = () => {
           <Clock className="w-10 h-10 p-2 bg-blue-100 rounded-lg text-blue-600" />
           <div>
             <p className="text-sm font-medium text-gray-500">LAST CLICKED</p>
-            <p className="font-medium mt-2">{stats?.lastClickedAt?new Date(stats.lastClickedAt).toLocaleDateString():Never}</p>
+            <p className="font-medium mt-2">{stats?.lastClickedAt?new Date(stats.lastClickedAt).toLocaleDateString():'Never'}</p>
           </div>
         </div>
         <div className="flex gap-2 border-b border-gray-300 pb-4 items-center">
